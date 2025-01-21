@@ -2,6 +2,7 @@ import { TodoType } from "../types";
 
 interface Props {
   onUpdate: (targetId: number) => void;
+  onDelete: (targetId: number) => void;
 }
 
 const TodoItem = ({
@@ -10,9 +11,14 @@ const TodoItem = ({
   content,
   date,
   onUpdate,
+  onDelete,
 }: TodoType & Props) => {
   const onChangeCheckbox: React.ChangeEventHandler<HTMLInputElement> = () => {
     onUpdate(id);
+  };
+
+  const onClickDelete: React.MouseEventHandler<HTMLButtonElement> = () => {
+    onDelete(id);
   };
 
   return (
@@ -30,7 +36,10 @@ const TodoItem = ({
           {date.toString()}
         </div>
       </label>
-      <button className="ml-auto rounded-lg bg-slate-300 px-3 py-1 text-xs text-gray-700">
+      <button
+        onClick={onClickDelete}
+        className="ml-auto rounded-lg bg-slate-300 px-3 py-1 text-xs text-gray-700"
+      >
         삭제
       </button>
     </li>

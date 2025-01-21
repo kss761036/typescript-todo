@@ -4,13 +4,14 @@ import TodoItem from "./TodoItem";
 interface Props {
   todos: TodoType[];
   onUpdate: (targetId: number) => void;
+  onDelete: (targetId: number) => void;
 }
 
-const List = ({ todos, onUpdate }: Props) => {
+const List = ({ todos, onUpdate, onDelete }: Props) => {
   return (
     <>
       <div>
-        <h3 className="mb-5 text-2xl font-bold">Todo List ✍🏻</h3>
+        <h3 className="mb-5 text-2xl font-bold">Todo List 📝</h3>
         <input
           type="text"
           className="mb-3 block w-full border-b border-gray-500 px-2 leading-10"
@@ -20,7 +21,12 @@ const List = ({ todos, onUpdate }: Props) => {
       <ul className="rounded-md bg-slate-100 px-5 py-5">
         {todos.map((todo) => {
           return (
-            <TodoItem onUpdate={onUpdate} key={todo.id} {...todo}></TodoItem>
+            <TodoItem
+              onUpdate={onUpdate}
+              onDelete={onDelete}
+              key={todo.id}
+              {...todo}
+            ></TodoItem>
           );
         })}
       </ul>

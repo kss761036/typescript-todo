@@ -52,12 +52,16 @@ function App() {
     );
   };
 
+  const onDelete = (targetId: number) => {
+    setTodos(todos.filter((todo) => todo.id !== targetId));
+  };
+
   return (
     <div className="min-h-screen w-full bg-slate-100">
       <div className="ml-auto mr-auto min-h-screen w-full max-w-xl bg-white px-5 py-8 shadow-xl">
         <Header />
         <Editor onCreate={onCreate} />
-        <List todos={todos} onUpdate={onUpdate} />
+        <List todos={todos} onUpdate={onUpdate} onDelete={onDelete} />
       </div>
     </div>
   );
