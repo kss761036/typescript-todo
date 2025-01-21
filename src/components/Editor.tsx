@@ -18,7 +18,7 @@ const Editor = ({ onCreate }: Props) => {
   };
 
   const onKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && e.nativeEvent.isComposing === false) {
       onSubmit();
     }
   };
