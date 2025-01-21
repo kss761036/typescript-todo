@@ -1,38 +1,31 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Editor from "./components/Editor";
 import Header from "./components/Header";
 import List from "./components/List";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
+import { TodoType } from "./types";
 
 dayjs.locale("ko");
 const formattedDate = dayjs().format("YY.MM.DD dd");
 
-const mockData = [
-  {
-    id: 0,
-    isDone: false,
-    content: "React 공부하기",
-    date: formattedDate,
-  },
-  {
-    id: 1,
-    isDone: false,
-    content: "빨래하기",
-    date: formattedDate,
-  },
-  {
-    id: 2,
-    isDone: false,
-    content: "고양이 놀아주기",
-    date: formattedDate,
-  },
-];
-
 function App() {
-  const idRef = useRef(3);
-  const [todos, setTodos] = useState(mockData);
+  // JSON.parse는 빈값을 반환하면 안됨.
+  const getInitialTodos = (): TodoType[] => {
+    const localData = localStorage.getItem("todos");
+    if (localData) {
+      return JSON.parse(localData);
+    }
+    return [];
+  };
+
+  const idRef = useRef(0);
+  const [todos, setTodos] = useState<TodoType[]>(getInitialTodos);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const onCreate = (content: string) => {
     const newData = {
