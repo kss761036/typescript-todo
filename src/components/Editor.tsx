@@ -30,7 +30,7 @@ const Editor = ({ onCreate }: Props) => {
   return (
     <div className="mb-10 flex gap-3">
       <input
-        className="h-12 flex-1 rounded-lg border border-gray-500 px-4"
+        className="h-12 flex-1 rounded-lg border border-gray-500 px-4 transition-shadow focus:border-gray-900 focus:shadow-lg focus:outline-none"
         type="text"
         placeholder="새로운 Todo..."
         value={value}
@@ -40,7 +40,7 @@ const Editor = ({ onCreate }: Props) => {
       />
       <button
         onClick={onSubmit}
-        className="rounded-lg border border-indigo-500 bg-indigo-500 px-5 text-white"
+        className="rounded-lg border border-indigo-500 bg-indigo-500 px-5 text-white focus:outline-none"
       >
         추가
       </button>

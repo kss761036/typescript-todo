@@ -50,7 +50,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-slate-100">
+    <div className="font-pre min-h-screen w-full bg-slate-100">
       <div className="ml-auto mr-auto min-h-screen w-full max-w-xl bg-white px-5 py-8 shadow-xl">
         <Header />
         <Editor onCreate={onCreate} />

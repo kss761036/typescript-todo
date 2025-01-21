@@ -30,7 +30,7 @@ const List = ({ todos, onUpdate, onDelete }: Props) => {
         <h3 className="mb-5 text-2xl font-bold">Todo List 📝</h3>
         <input
           type="text"
-          className="mb-3 block w-full border-b border-gray-500 px-2 leading-10"
+          className="mb-3 block w-full border-b border-gray-500 px-2 leading-10 transition-shadow focus:shadow-lg focus:outline-none"
           placeholder="검색어를 입력해주세요."
           value={search}
           onChange={onChangeSearch}
